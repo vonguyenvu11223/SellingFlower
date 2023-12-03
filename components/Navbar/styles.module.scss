@@ -1,0 +1,44 @@
+.wrapper {
+  border-top: 1px solid #ccc;
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    li {
+      font-size: 16px;
+      line-height: 45px;
+      color: #252525;
+      padding: 5px 0 5px 20px;
+      &:not(:last-child)::after {
+        content: "|";
+        margin-left: 12px;
+      }
+      &:first-child {
+        padding: 5px 0 5px 0;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      font-size: 24px;
+    }
+    p {
+      margin-top: 8px;
+      color: #adadad;
+      font-size: 14px;
+    }
+  }
+}
