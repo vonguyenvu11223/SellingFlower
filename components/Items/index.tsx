@@ -12,8 +12,8 @@ const Items = () => {
         height={60}
         className={styles.logo}
       />
+
       <fieldset className={styles.fieldset}>
-        <legend>Hàng mới về</legend>
         <div className={styles.items}>
           <Item />
         </div>
