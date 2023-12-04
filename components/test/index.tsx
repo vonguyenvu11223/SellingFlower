@@ -1,19 +1,17 @@
 "use client";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-interface Props {
-  show: boolean;
-  setShow: any;
-}
+function Example() {
+  const [show, setShow] = useState(true);
 
-function Modals({ show, setShow }: Props) {
   const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -31,4 +29,4 @@ function Modals({ show, setShow }: Props) {
   );
 }
 
-export default Modals;
+export default Example;

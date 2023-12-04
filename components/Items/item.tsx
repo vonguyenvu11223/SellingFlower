@@ -17,12 +17,13 @@ const Item = () => {
 
   return (
     <>
+      <Modals show={show} setShow={setShow} />
       {ListItems.map((item) => {
         return (
           <div className={styles.item} key={item?.id}>
             <Image src={item?.src} alt="Image" width={237} height={237} />
             <p className={styles.title}>{item?.title}</p>
-            <p style={{ color: "red" }}>{item?.price}</p>
+            <p style={{ color: "red", margin: "0" }}>{item?.price}</p>
             <p>
               <Rating defaultValue={item?.rating} size="small" readOnly />
             </p>
@@ -36,7 +37,6 @@ const Item = () => {
                 <ShoppingCartOutlinedIcon />
               </button>
             </div>
-            <Modals show={show} setShow={setShow} />
           </div>
         );
       })}
