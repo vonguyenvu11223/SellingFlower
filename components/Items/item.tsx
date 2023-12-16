@@ -1,11 +1,13 @@
 "use client";
-import styles from "./styles.module.scss";
-import Image from "next/image";
-import { Rating } from "@mui/material";
-import { ListItems } from "../../utils/ListItems";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import Modals from "../Modal";
+import { Rating } from "@mui/material";
+import Image from "next/image";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ListItems } from "../../utils/ListItems";
+import Modals from "../Modal";
+import styles from "./styles.module.scss";
 
 const Item = () => {
   const [show, setShow] = useState<boolean>(false);
@@ -14,10 +16,24 @@ const Item = () => {
     setShow(true);
     setValue(item);
   };
+  const notify = () => {
+    toast.success("Thêm giỏ hàng thành công", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   return (
     <>
-      <Modals show={show} setShow={setShow} />
+      <Modals show={show} setShow={setShow} value={value} />
+      <ToastContainer />
+
       {ListItems.map((item) => {
         return (
           <div className={styles.item} key={item?.id}>
@@ -33,7 +49,7 @@ const Item = () => {
                 onClick={() => handleClick(item)}>
                 Chi tiết
               </button>
-              <button className={styles.cart}>
+              <button className={styles.cart} onClick={notify}>
                 <ShoppingCartOutlinedIcon />
               </button>
             </div>
