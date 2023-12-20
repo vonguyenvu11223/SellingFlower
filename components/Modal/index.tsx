@@ -4,6 +4,7 @@ import Image from "next/image";
 import Modal from "react-bootstrap/Modal";
 import styles from "./styles.module.scss";
 import { BsCart2 } from "react-icons/bs";
+import { useState } from "react";
 
 interface Props {
   show: boolean;
@@ -19,7 +20,7 @@ interface Props {
 
 function Modals({ show, setShow, value }: Props) {
   const handleClose = () => setShow(false);
-
+  const [quantity, setQuantity] = useState<number>(1);
   return (
     <>
       <Modal show={show} onHide={handleClose} size="xl">
@@ -40,12 +41,16 @@ function Modals({ show, setShow, value }: Props) {
               </div>
               <div className={styles.quantity}>
                 <div className={styles.input}>
-                  <input type="text" />
+                  <input type="text" value={quantity} defaultValue={quantity} />
                 </div>
-                <div className={styles.minus}>
+                <div
+                  className={styles.minus}
+                  onClick={() => quantity > 0 && setQuantity(quantity - 1)}>
                   <button>-</button>
                 </div>
-                <div className={styles.plus}>
+                <div
+                  className={styles.plus}
+                  onClick={() => setQuantity(quantity + 1)}>
                   <button>+</button>
                 </div>
               </div>
@@ -56,7 +61,10 @@ function Modals({ show, setShow, value }: Props) {
                 <button>Thêm vào giỏ hàng</button>
               </div>
               <div className={styles.hotline}>
-                Gọi ngay: <span>18005974759</span>
+                Gọi ngay:{" "}
+                <span style={{ color: "#f4574c", fontSize: "22px" }}>
+                  18005974759
+                </span>
               </div>
             </div>
           </div>

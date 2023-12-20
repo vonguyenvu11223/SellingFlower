@@ -10,11 +10,12 @@
     align-items: center;
     list-style: none;
     padding: 0;
-    li {
+    a {
       font-size: 16px;
       line-height: 45px;
       color: #252525;
       padding: 5px 0 5px 20px;
+      text-decoration: none;
       &:not(:last-child)::after {
         content: "|";
         margin-left: 12px;
@@ -35,7 +36,7 @@
       font-size: 24px;
     }
     p {
-      margin-top: 22px;
+      margin-top: 15px;
       color: #adadad;
       font-size: 14px;
     }

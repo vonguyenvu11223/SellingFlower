@@ -3,8 +3,10 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Rating } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { addSuccuss } from "../../store/features/cart";
 import { ListItems } from "../../utils/ListItems";
 import Modals from "../Modal";
 import styles from "./styles.module.scss";
@@ -12,11 +14,14 @@ import styles from "./styles.module.scss";
 const Item = () => {
   const [show, setShow] = useState<boolean>(false);
   const [value, setValue] = useState<any>("");
+  const dispatch = useDispatch();
   const handleClick = (item: any) => {
     setShow(true);
     setValue(item);
   };
+
   const notify = () => {
+    dispatch(addSuccuss());
     toast.success("Thêm giỏ hàng thành công", {
       position: "top-right",
       autoClose: 3000,
@@ -33,7 +38,6 @@ const Item = () => {
     <>
       <Modals show={show} setShow={setShow} value={value} />
       <ToastContainer />
-
       {ListItems.map((item) => {
         return (
           <div className={styles.item} key={item?.id}>
