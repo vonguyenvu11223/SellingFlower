@@ -58,7 +58,7 @@ function Modals({ show, setShow, value }: Props) {
                 <div className={styles.cartIcon}>
                   <BsCart2 />
                 </div>
-                <button>Thêm vào giỏ hàng</button>
+                <button>Thanh toán</button>
               </div>
               <div className={styles.hotline}>
                 Gọi ngay:{" "}

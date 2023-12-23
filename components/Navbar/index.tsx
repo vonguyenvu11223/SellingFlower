@@ -1,14 +1,13 @@
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 import Link from "next/link";
 import { useAppSelector } from "../../store/store";
 import { NavbarList } from "../../utils/NavbarList";
 import styles from "./styles.module.scss";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const quantity = useAppSelector((state) => state?.cart?.value);
-  const [select, setSelect] = useState();
-
+  const currentPage = usePathname();
   return (
     <div className={styles.wrapper}>
       <div>
@@ -19,9 +18,10 @@ const Navbar = () => {
                 href={item?.nav}
                 key={index}
                 className={styles.li}
-                onClick={() => setSelect(item.id)}
                 style={
-                  select === item.id ? { color: "#f4574c" } : { color: "" }
+                  item?.nav === currentPage.split("/")[1]
+                    ? { color: "#ef6056" }
+                    : { color: "" }
                 }>
                 {item?.name}
               </Link>

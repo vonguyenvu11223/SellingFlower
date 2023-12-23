@@ -14,10 +14,25 @@ import "react-toastify/dist/ReactToastify.css";
 const Products = () => {
   const [show, setShow] = useState<boolean>(false);
   const [value, setValue] = useState<any>("");
+  const [displayedItems, setDisplayedItems] = useState(ListItems);
   const dispatch = useDispatch();
   const handleClick = (item: any) => {
     setShow(true);
     setValue(item);
+  };
+
+  const handleFilter = (value: string) => {
+    let filteredItems = [...ListItems];
+    if (value === "tangdan") {
+      filteredItems.sort((a: any, b: any) => a.price - b.price); // Sắp xếp giá tăng dần
+    } else if (value === "giamdan") {
+      filteredItems.sort((a: any, b: any) => b.price - a.price); // Sắp xếp giá giảm dần
+    } else if (value === "moidencu") {
+      filteredItems.sort((a, b) => a.id - b.id); // Sắp xếp theo thứ tự mới đến cũ
+    } else if (value === "cudenmoi") {
+      filteredItems.sort((a, b) => b.id - a.id); // Sắp xếp theo thứ tự cũ đến mới
+    }
+    setDisplayedItems(filteredItems);
   };
 
   const notify = () => {
@@ -48,17 +63,20 @@ const Products = () => {
           </div>
           <div className={styles.filter}>
             <p>Sắp xếp:</p>
-            <select name="option" id="">
+            <select
+              name="option"
+              id=""
+              onChange={(e) => handleFilter(e.target.value)}>
               <option value="">Mặc định</option>
-              <option value="">Giá tăng dần</option>
-              <option value="">Giá giảm dần</option>
-              <option value="">Mới đến cũ</option>
-              <option value="">Cũ đến mới</option>
+              <option value="tangdan">Giá tăng dần</option>
+              <option value="giamdan">Giá giảm dần</option>
+              <option value="moidencu">Mới đến cũ</option>
+              <option value="cudenmoi">Cũ đến mới</option>
             </select>
           </div>
         </div>
         <div className={styles.products}>
-          {ListItems.map((item) => {
+          {displayedItems.map((item: any) => {
             return (
               <div className={styles.item} key={item?.id}>
                 <Image src={item?.src} alt="Image" width={237} height={237} />
