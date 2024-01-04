@@ -9,7 +9,7 @@ export const ListItems = [
   {
     id: 2,
     src: "https://bizweb.dktcdn.net/thumb/medium/100/232/638/products/11.jpg?v=1500085469247",
-    title: "Special Love - hoa tình yêu",
+    title: "hoa tình yêu",
     price: "130.000",
     rating: 5,
   },
@@ -23,14 +23,14 @@ export const ListItems = [
   {
     id: 4,
     src: "https://bizweb.dktcdn.net/thumb/medium/100/232/638/products/11.jpg?v=1500085469247",
-    title: "Giấc mơ lãng mạn - Hoa tình yêu",
+    title: "Giấc mơ lãng mạn",
     price: "550.000",
     rating: 5,
   },
   {
     id: 5,
     src: "https://bizweb.dktcdn.net/thumb/medium/100/232/638/products/4-6db63604-7cf9-4a0e-abeb-dbc397edd201.jpg?v=1500087427630",
-    title: "Ngày của em - hoa sinh nhật",
+    title: "hoa sinh nhật",
     price: "650.000",
     rating: 5,
   },

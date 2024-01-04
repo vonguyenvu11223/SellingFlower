@@ -16,6 +16,7 @@ const Products = () => {
   const [value, setValue] = useState<any>("");
   const [displayedItems, setDisplayedItems] = useState(ListItems);
   const dispatch = useDispatch();
+
   const handleClick = (item: any) => {
     setShow(true);
     setValue(item);

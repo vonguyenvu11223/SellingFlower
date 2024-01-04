@@ -1,22 +1,23 @@
 "use client";
+import { SignInButton, UserButton, useAuth, useUser } from "@clerk/nextjs";
 import PhoneIcon from "@mui/icons-material/Phone";
+import Image from "next/image";
+import Link from "next/link";
 import { FaFacebook } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import Navbar from "../Navbar";
 import Icons from "./icons";
 import styles from "./styles.module.scss";
-import Image from "next/image";
-import { FaRegUser } from "react-icons/fa";
-import Link from "next/link";
 
 const Header = () => {
+  const { user } = useUser();
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.icons}>
           <Icons href="" icons={<FaFacebook className={styles.facebook} />} />
           <Icons
-            href=""
+            href="https://www.facebook.com"
             icons={<IoLogoInstagram className={styles.instagram} />}
           />
           <Icons
@@ -35,7 +36,11 @@ const Header = () => {
           />
         </Link>
         <div className={styles.search}>
-          <FaRegUser size={20} />
+          {user === null ? (
+            <SignInButton />
+          ) : (
+            <UserButton afterSignOutUrl="/" />
+          )}
         </div>
       </div>
       <Navbar />
